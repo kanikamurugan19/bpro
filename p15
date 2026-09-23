@@ -1,4 +1,4 @@
-
+echo "--- Disk Usage of Home Directory ---"
 du -sh ~/* 2>/dev/null
 
 echo ""
