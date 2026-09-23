@@ -1,0 +1,14 @@
+echo -e "Username : $USER"
+echo -e "Login Name : $LOGNAME"
+echo -e "Current Shell : $SHELL"
+echo -e "Home Directory : $HOME"
+echo -e "OS Type : $OSTYPE"
+echo -e "Current Path : $PATH"
+echo -e "Working Dir : `pwd`"
+echo -e "Logged-in Users : `who | wc -l`"
+echo -e "Available Shells:"
+cat /etc/shells
+echo -e "CPU Info :"
+lscpu | grep -E 'Model name|CPU MHz'
+echo -e "Memory Info :"
+free -m
