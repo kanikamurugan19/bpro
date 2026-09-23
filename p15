@@ -1,0 +1,23 @@
+# a. Disk usage of all directories in home folder
+echo "--- Disk Usage of Home Directory ---"
+du -sh ~/* 2>/dev/null
+# b. Top 5 largest directories in the system
+echo ""
+echo "--- Top 5 Largest Directories ---"
+du -sh /* 2>/dev/null | sort -rh | head -5
+# c. Number of files in each home subdirectory
+echo ""
+echo "--- File Count in Each Home Subdirectory ---"
+for dir in ~/*/
+do
+count=$(ls "$dir" 2>/dev/null | wc -l)
+echo "$dir : $count files"
+done
+# d. Filesystem type of each partition
+echo ""
+echo "--- Filesystem Type of Each Partition ---"
+df -T | awk '{print $1, $2, $NF}'
+# e. Free disk space available
+echo ""
+echo "--- Free Disk Space Available ---"
+df -h
