@@ -1,0 +1,23 @@
+# a. Display all groups available in the system
+echo "--- All Groups in the System ---"
+cat /etc/group | cut -d: -f1
+# b. Display the group ID of a specified group
+echo ""
+echo "Enter group name to find its ID:"
+read grpname
+grpid=$(getent group $grpname | cut -d: -f3)
+echo "Group ID of '$grpname' is: $grpid"
+# c. List users belonging to a particular group
+echo ""
+echo "Enter group name to list its members:"
+read grpname2
+echo "Users in group '$grpname2':"
+getent group $grpname2 | cut -d: -f4 | tr ',' '\n'
+# d. Count total number of groups
+echo ""
+totalgroups=$(cat /etc/group | wc -l)
+echo "Total number of groups: $totalgroups"
+# e. Display groups assigned to current user
+echo ""
+echo "Groups assigned to current user ($USER):"
+groups $USER
