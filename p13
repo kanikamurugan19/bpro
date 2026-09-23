@@ -1,32 +1,22 @@
-# a. Display system hostname
+
 echo "--- System Hostname ---"
 hostname
-# b. IP address of all network interfaces
+
 echo ""
 echo "--- IP Addresses of Network Interfaces ---"
 ip addr show | grep -E 'inet |^[0-9]+:'
-# c. Routing table information
+
 echo ""
 echo "--- Routing Table ---"
 ip route
-# d. DNS server configuration
+
 echo ""
 echo "--- DNS Server Configuration ---"
 cat /etc/resolv.conf
-# e. Test network connectivity
-# a. Display system hostname
-echo "--- System Hostname ---"
-hostname
-# b. IP address of all network interfaces
+
 echo ""
-echo "--- IP Addresses of Network Interfaces ---"
-ip addr show | grep -E 'inet |^[0-9]+:'
-# c. Routing table information
-echo ""
-echo "--- Routing Table ---"
-ip route
-# d. DNS server configuration
-echo ""
-echo "--- DNS Server Configuration ---"
-cat /etc/resolv.conf
-# e. Test network connectivity
+echo "Enter remote host to test (e.g. 8.8.8.8):"
+read remotehost
+echo "Testing connectivity to $remotehost ..."
+ping -c 4 $remotehost
+
