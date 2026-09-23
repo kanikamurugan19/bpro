@@ -1,0 +1,21 @@
+# a. Recent system log entries
+echo "--- Recent System Log Entries ---"
+tail -20 /var/log/messages 2>/dev/null || journalctl -n 20
+# b. Login history of users
+echo ""
+echo "--- Login History of Users ---"
+last | head -15
+# c. Failed login attempts
+echo ""
+echo "--- Failed Login Attempts ---"
+grep "Failed password" /var/log/secure 2>/dev/null | tail -10
+# d. Search for specific keyword in log files
+echo ""
+echo "Enter keyword to search in /var/log/messages:"
+read keyword
+echo "Results for '$keyword':"
+grep -i "$keyword" /var/log/messages 2>/dev/null | tail -10
+# e. Last 10 security related log messages
+echo ""
+echo "--- Last 10 Security Log Messages ---"
+tail -10 /var/log/secure 2>/dev/null || journalctl -u sshd -n 10
