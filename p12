@@ -1,0 +1,21 @@
+# a. Display all running processes
+echo "--- All Running Processes ---"
+ps -ef
+# b. Processes belonging to the current user
+echo ""
+echo "--- Processes of Current User ($USER) ---"
+ps -u $USER
+# c. Top 5 CPU consuming processes
+echo ""
+echo "--- Top 5 CPU Consuming Processes ---"
+echo "PID COMMAND %CPU"
+ps -eo pid,comm,%cpu --sort=-%cpu | head -6
+# d. Process ID and Parent Process ID
+echo ""
+echo "--- PID and PPID ---"
+echo "PID PPID COMMAND"
+ps -eo pid,ppid,comm | head -15
+# e. Total number of running processes
+echo ""
+total=$(ps -ef | wc -l)
+echo "Total number of running processes: $total"
